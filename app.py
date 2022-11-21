@@ -1,46 +1,18 @@
 from flask import Flask, render_template, Response
-import cv2
+from flask_cors import cross_origin
+from urllib.request import urlopen
 
 app = Flask(__name__)
 
-def find_camera(id):
-    cameras = ['rtsp://admin:Password123@mbamc-eco.cameraddns.net:12222/Streaming/Channels/101', 
-               'rtsp://admin:Password123@cameranamkhang.cameraddns.net:555/Streaming/Channels/101',
-               'rtsp://admin:Password123@cameranamkhang.cameraddns.net:554/Streaming/Channels/101',
-               'rtsp://demo:Password123@mbamc-nhanviet-nvr-1.cameraddns.net:12223/Streaming/Channels/1201']
-    return cameras[int(id)]
- 
-
-def gen_frames(camera_id):
-     
-    cam = find_camera(camera_id)
-    cap=  cv2.VideoCapture(cam)
-    
-    while True:
-        # for cap in caps:
-        # # Capture frame-by-frame
-        success, frame = cap.read()  # read the camera frame
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
-
-
-@app.route('/video_feed/<string:id>/', methods=["GET"])
-def video_feed(id):
-   
-    """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen_frames(id),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
-
+@app.route('/test')
+def hello():
+    with urlopen('http://127.0.0.1:10707//vinorsoft/streamingcamera/v1.0/processManagement/get-path-streaming/?camera_id=cam1&height_resolution=234&width_resolution=416/') as r:
+        text = r.read()
+    return text
 
 @app.route('/', methods=["GET"])
 def index():
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.run()
