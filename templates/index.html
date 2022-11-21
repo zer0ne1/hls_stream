@@ -15,11 +15,28 @@
     <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 </head>
 <body>
-  <video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls preload="auto" width="640" height="268" 
-  data-setup='{}'>
-    <source
-       src=""
-       type="application/x-mpegURL">
-  </video>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <h2>CAM 1</h2>
+        <video id=video class="video-js vjs-default-skin 1 " controls preload="auto" width="400" height="250" 
+        data-setup='{}'>
+          <source
+             src=""
+             type="application/x-mpegURL">
+        </video> 
+      </div>
+      <div class="col-4">
+        <h2>CAM 2</h2>
+        <video id=video1 class="video-js vjs-default-skin 2" controls preload="auto" width="400" height="250" 
+        data-setup='{}'>
+          <source
+             src=""
+             type="application/x-mpegURL">
+        </video>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
