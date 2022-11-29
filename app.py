@@ -1,6 +1,4 @@
 from flask import Flask, render_template, Response
-from flask_cors import cross_origin
-from urllib.request import urlopen
 
 app = Flask(__name__)
 

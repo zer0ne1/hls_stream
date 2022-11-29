@@ -11,32 +11,23 @@
 
     <title>Streaming</title>
     <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
-    <script src="https://unpkg.com/video.js/dist/video.js"></script>
-    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 </head>
 <body>
   <div class="container">
     <div class="row justify-content-between">
-      <div class="col-4">
+      <div class="col-3">
         <h2>CAM 1</h2>
-        <video id=video class="video-js vjs-default-skin 1 " controls preload="auto" width="400" height="250" 
+        <video id=video class="video-js vjs-default-skin 1" controls preload="auto" width="400" height="250" 
         data-setup='{}'>
           <source
              src=""
              type="application/x-mpegURL">
         </video> 
-      </div>
-      <div class="col-4">
-        <h2>CAM 2</h2>
-        <video id=video1 class="video-js vjs-default-skin 2" controls preload="auto" width="400" height="250" 
-        data-setup='{}'>
-          <source
-             src=""
-             type="application/x-mpegURL">
-        </video>
-      </div>
+    </div>
     </div>
   </div>
 
+  <script src="https://unpkg.com/video.js/dist/video.js"></script>
+  <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
 </body>
 </html>
